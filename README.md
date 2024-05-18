@@ -24,6 +24,8 @@ Siga as etapas abaixo para configurar o ambiente de desenvolvimento:
 
 3. Instale o Android Studio e configure as SDKs necessárias para o MAUI. Você pode encontrar as instruções de instalação em [developer.android.com/studio](https://developer.android.com/studio).
 
+4. Instale o Xcode versão 15 ou superior caso deseje fazer deploy para iOS. Você pode encontrar o Xcode na App Store ou no site oficial da Apple.
+
 ## Executando o projeto
 
 Para executar o projeto, siga as etapas abaixo:
