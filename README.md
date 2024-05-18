@@ -41,9 +41,8 @@ Para executar o projeto, siga as etapas abaixo:
 3. Execute o seguinte comando para iniciar o aplicativo:
 
     ```shell
-    dotnet run
+    dotnet build -t:Run -f net8.0-android
     ```
-
 Isso iniciará o aplicativo MAUI em seu emulador ou dispositivo Android.
 
 ## Contribuição
