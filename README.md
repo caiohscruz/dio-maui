@@ -1,6 +1,6 @@
 # Projeto DIO MAUI
 
-Este é o projeto de um curso da DIO que fiz para me familiarizar com o MAUI. 
+Este é o projeto de um curso da DIO que fiz para me familiarizar com o MAUI.
 
 ## Pré-requisitos
 
@@ -28,7 +28,7 @@ Siga as etapas abaixo para configurar o ambiente de desenvolvimento:
 
 ## Executando o projeto
 
-Para executar o projeto, siga as etapas abaixo:
+Para executar o projeto, já tendo um emulador iniciado na sua máquina ou com seu celular vinculado para debug, siga as etapas abaixo:
 
 1. Abra o terminal na pasta raiz do projeto.
 
@@ -43,12 +43,13 @@ Para executar o projeto, siga as etapas abaixo:
     ```shell
     dotnet build -t:Run -f net8.0-android
     ```
+
 Isso iniciará o aplicativo MAUI em seu emulador ou dispositivo Android.
 
-## Contribuição
+Caso já tenha emuladores configurados, mas deseje que sua inicialização seja feita programaticamente, execute o script abaixo:
 
-Se você quiser contribuir para este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+```shell
+./run.sh
+```
 
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
+O script `run.sh` irá verificar os emuladores disponíveis na sua máquina, iniciar um emulador e então executar a aplicação nele. Gostaria de ter implementado a criação de um novo emulador via command line caso não existisse nenhum, mas não consegui resolver isso ainda.
