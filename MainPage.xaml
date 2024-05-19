@@ -21,7 +21,7 @@
                     SemanticProperties.Hint="Counts the number of times you click"
                     Clicked="OnCounterClicked"
                     HorizontalOptions="Fill" />
-            <CollectionView x:Name="TarefasCollection">
+            <CollectionView x:Name="TarefasCollectionList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10"
@@ -41,6 +41,44 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <StackLayout>
+                <Grid Padding="5"
+                      BackgroundColor="LightGray"
+                      RowDefinitions="Auto"
+                      ColumnDefinitions="0.2*, 0.3*,0.3*,0.2*">
+                    <Label Grid.Column="0"
+                           FontAttributes="Bold"
+                           Text="#" />
+                    <Label Grid.Column="1"
+                           FontAttributes="Bold"
+                           Text="Titulo" />
+                    <Label Grid.Column="2"
+                           FontAttributes="Bold"
+                           Text="Usuario" />
+                    <Label Grid.Column="3"
+                           FontAttributes="Bold"
+                           Text="Status" />
+                </Grid>
+                <CollectionView x:Name="TarefasCollectionTable">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5"
+                                  RowDefinitions="Auto"
+                                  ColumnDefinitions="0.2*, 0.3*,0.3*,0.2*">
+                                <Label Grid.Column="0"
+                                       Text="{Binding Id}"
+                                       FontAttributes="Bold" />
+                                <Label Grid.Column="1"
+                                       Text="{Binding Titulo}" />
+                                <Label Grid.Column="2"
+                                       Text="{Binding UsuarioNome}" />
+                                <Label Grid.Column="3"
+                                       Text="{Binding Status}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

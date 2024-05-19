@@ -17,7 +17,8 @@ public partial class MainPage : ContentPage
 	private async void CarregarTarefas()
 	{
 		var tarefas = await _tarefasService.GetAllAsync();
-		TarefasCollection.ItemsSource = tarefas;
+		TarefasCollectionList.ItemsSource = tarefas;
+		TarefasCollectionTable.ItemsSource = tarefas;
 	}
 
 	private async void OnCounterClicked(object sender, EventArgs e)
