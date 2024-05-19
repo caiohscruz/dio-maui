@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace dio_maui;
+namespace diomaui;
 
 public class Program
 {

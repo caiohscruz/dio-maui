@@ -1,4 +1,4 @@
-﻿namespace dio_maui;
+﻿namespace diomaui;
 
 public partial class MainPage : ContentPage
 {
