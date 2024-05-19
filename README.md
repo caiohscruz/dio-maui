@@ -53,3 +53,7 @@ Caso já tenha emuladores configurados, mas deseje que sua inicialização seja 
 ```
 
 O script `run.sh` irá verificar os emuladores disponíveis na sua máquina, iniciar um emulador e então executar a aplicação nele. Gostaria de ter implementado a criação de um novo emulador via command line caso não existisse nenhum, mas não consegui resolver isso ainda.
+
+## Dependências
+
+- sqlite-net-pcl
