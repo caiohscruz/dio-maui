@@ -1,4 +1,5 @@
-﻿using diomaui.Models;
+﻿using System.Windows.Input;
+using diomaui.Models;
 using diomaui.Services;
 
 namespace diomaui;
@@ -7,21 +8,30 @@ public partial class MainPage : ContentPage
 {
 
 	DatabaseService<Tarefa> _tarefasService;
+
+	public ICommand VerTarefaCommand { get; private set; }
+
 	public MainPage()
 	{
 		InitializeComponent();
 		_tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
+
+		VerTarefaCommand = new Command<Tarefa>((tarefa) =>
+		{
+			DisplayAlert("Alerta", $"Tarefa: {tarefa.Titulo}", "OK");
+		});
+		TarefasCollectionTable.BindingContext = this;
+
 		CarregarTarefas();
 	}
 
 	private async void CarregarTarefas()
 	{
 		var tarefas = await _tarefasService.GetAllAsync();
-		TarefasCollectionList.ItemsSource = tarefas;
 		TarefasCollectionTable.ItemsSource = tarefas;
 	}
 
-	private async void OnCounterClicked(object sender, EventArgs e)
+	private async void OnAddTasksBtnClicked(object sender, EventArgs e)
 	{
 
 		var random = new Random();
@@ -41,16 +51,7 @@ public partial class MainPage : ContentPage
 
 		await _tarefasService.InsertAsync(tarefa);
 
-		var count = await _tarefasService.CountAllAsync();
-
-		if (count == 1)
-			CounterBtn.Text = $"{count} tarefa";
-		else
-			CounterBtn.Text = $"{count} tarefas";
-
 		CarregarTarefas();
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
 }
 

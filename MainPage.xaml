@@ -16,36 +16,16 @@
                    Style="{StaticResource SubHeadline}"
                    SemanticProperties.HeadingLevel="Level2"
                    SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-            <Button x:Name="CounterBtn"
-                    Text="Click me"
-                    SemanticProperties.Hint="Counts the number of times you click"
-                    Clicked="OnCounterClicked"
+            <Button x:Name="AddTasksBtn"
+                    Text="Adicionar Tarefa"
+                    SemanticProperties.Hint="Add tasks when clicked"
+                    Clicked="OnAddTasksBtnClicked"
                     HorizontalOptions="Fill" />
-            <CollectionView x:Name="TarefasCollectionList">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10"
-                              RowDefinitions="Auto, Auto, Auto, Auto, Auto">
-                            <Label Grid.Row="0"
-                                   Text="{Binding Id}"
-                                   FontAttributes="Bold" />
-                            <Label Grid.Row="1"
-                                   Text="{Binding Titulo}" />
-                            <Label Grid.Row="2"
-                                   Text="{Binding Descricao}" />
-                            <Label Grid.Row="3"
-                                   Text="{Binding UsuarioNome}" />
-                            <Label Grid.Row="4"
-                                   Text="{Binding Status}" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
             <StackLayout>
                 <Grid Padding="5"
                       BackgroundColor="LightGray"
                       RowDefinitions="Auto"
-                      ColumnDefinitions="0.2*, 0.3*,0.3*,0.2*">
+                      ColumnDefinitions="0.1*, 0.3*,0.2*,0.2*, 0.2*">
                     <Label Grid.Column="0"
                            FontAttributes="Bold"
                            Text="#" />
@@ -58,13 +38,16 @@
                     <Label Grid.Column="3"
                            FontAttributes="Bold"
                            Text="Status" />
+                    <Label Grid.Column="4"
+                           FontAttributes="Bold"
+                           Text="Ações" />
                 </Grid>
                 <CollectionView x:Name="TarefasCollectionTable">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid Padding="5"
                                   RowDefinitions="Auto"
-                                  ColumnDefinitions="0.2*, 0.3*,0.3*,0.2*">
+                                  ColumnDefinitions="0.1*, 0.3*,0.2*,0.2*, 0.2*">
                                 <Label Grid.Column="0"
                                        Text="{Binding Id}"
                                        FontAttributes="Bold" />
@@ -74,6 +57,10 @@
                                        Text="{Binding UsuarioNome}" />
                                 <Label Grid.Column="3"
                                        Text="{Binding Status}" />
+                                <Button Grid.Column="4"
+                                        Command="{Binding Path=BindingContext.VerTarefaCommand, Source={x:Reference TarefasCollectionTable}}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Ver" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
