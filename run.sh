@@ -1,0 +1,30 @@
+# List all available Android Virtual Devices (AVDs)
+echo "Listing all available AVDs..."
+C:/Users/caioh/AppData/Local/Android/Sdk/emulator/emulator -list-avds
+
+# Store the list of AVDs, excluding any lines containing "INFO"
+echo "Storing the list of AVDs..."
+avds=$(C:/Users/caioh/AppData/Local/Android/Sdk/emulator/emulator -list-avds | grep -v "INFO")
+
+# Select the first AVD from the list
+echo "Selecting the first AVD from the list..."
+emulator=$(echo "$avds" | head -n 1)
+
+# Check if the selected AVD is already running
+echo "Checking if the selected AVD is already running..."
+running_avd=$(C:/Users/caioh/AppData/Local/Android/Sdk/platform-tools/adb devices | grep "$emulator")
+if [[ -n "$running_avd" ]]; then
+    echo "The selected AVD is already running."
+else
+    # Start the selected AVD
+    echo "Starting the selected AVD..."
+    C:/Users/caioh/AppData/Local/Android/Sdk/emulator/emulator -avd "$emulator" &
+
+    # Wait for the Android device to be ready
+    echo "Waiting for the Android device to be ready..."
+    C:/Users/caioh/AppData/Local/Android/Sdk/platform-tools/adb wait-for-device    
+fi
+
+# Build and run the .NET project for Android 8.0
+echo "Building and running the .NET project for Android 8.0..."
+dotnet build -t:Run -f net8.0-android
