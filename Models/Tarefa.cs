@@ -1,4 +1,5 @@
 using diomaui.Enums;
+using diomaui.Services;
 using SQLite;
 
 namespace diomaui.Models
@@ -13,6 +14,14 @@ namespace diomaui.Models
         public DateTime DataCriacao { get; set; }
         public DateTime DataAtualizacao { get; set; }
         public int UsuarioId { get; set; }
+        public string UsuarioNome { get {
+            var usuario = UsuarioService.GetInstance().GetUsuarios().Find(u => u.Id == this.UsuarioId);
+            if(usuario is Usuario){
+                return usuario.Nome;
+            }else{
+                return "Sem usuário";
+            }
+        } }
         public Status Status { get; set; }
 
         public Tarefa()
