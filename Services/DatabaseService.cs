@@ -32,6 +32,11 @@ namespace diomaui.Services
             return _connection.Table<T>().ToListAsync();
         }
 
+         public Task<int> CountAllAsync() 
+        {
+            return _connection.Table<T>().CountAsync();
+        }
+
         public Task<T> GetByIdAsync(int id) 
         {
             return _connection.GetAsync<T>(id);
