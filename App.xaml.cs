@@ -6,6 +6,9 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new AppShell(); // muda toda a página toda
+		//MainPage = new NavigationPage(new AppShell()); // permite ter um menu superior fixo para várias telas
+		// repare na parte de cima durante a transição de páginas
+
 	}
 }

@@ -5,18 +5,56 @@
     <ScrollView>
         <VerticalStackLayout Padding="30,0"
                              Spacing="25">
+            <Label Text="Detalhes da tarefa"
+                   Style="{StaticResource Headline}"
+                   SemanticProperties.HeadingLevel="Level1" />
             <StackLayout Padding="20">
-                <Label Text="{Binding Tarefa.Titulo}"
-                       FontAttributes="Bold"
-                       FontSize="Large" />
-                <Label Text="{Binding Tarefa.Descricao}" />
-                <Label Text="{Binding Tarefa.UsuarioNome}" />
-                <Label Text="{Binding Tarefa.Status}" />
-                <Label Text="{Binding Tarefa.DataCriacao}" />
-                <Label Text="{Binding Tarefa.DataConclusao}" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Id:"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Tarefa.Id}"
+                           Margin="10, 0, 0, 0" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Título:"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Tarefa.Titulo}"
+                           Margin="10, 0, 0, 0" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Descrição:"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Tarefa.Descricao}"
+                           Margin="10, 0, 0, 0" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nome do Usuário:"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Tarefa.UsuarioNome}"
+                           Margin="10, 0, 0, 0" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Status:"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Tarefa.Status}"
+                           Margin="10, 0, 0, 0" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Data de Criação:"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Tarefa.DataCriacao}"
+                           Margin="10, 0, 0, 0" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Data de Atualização:"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Tarefa.DataAtualizacao}"
+                           Margin="10, 0, 0, 0" />
+                </StackLayout>
                 <Button Text="Voltar"
                         Clicked="OnVoltarClicked"
-                        HorizontalOptions="Fill" />
+                        HorizontalOptions="Fill"
+                        Margin="20,20,20,20" />
             </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
