@@ -16,24 +16,26 @@ public partial class TarefaSalvarPage : ContentPage
 		InitializeComponent();
 		Tarefa = tarefa;
 
+		StatusPicker.ItemsSource = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
+		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
+
 		if (Tarefa != null)
 		{
 			TituloEntry.Text = Tarefa.Titulo;
 			DescricaoEditor.Text = Tarefa.Descricao;
 			StatusPicker.SelectedItem = Tarefa.Status;
-			UsuarioPicker.SelectedItem = UsuarioService.GetInstance().GetUsuarios().Find(u => u.Id == Tarefa.UsuarioId);
+			UsuarioPicker.SelectedItem = Tarefa.Usuario;
+		}
+		else
+		{
+			Tarefa = new Tarefa();
 		}
 
-		StatusPicker.ItemsSource = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
-		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
-		
 		BindingContext = this;
 	}
 
 	private async void OnSalvarClicked(object sender, EventArgs e)
 	{
-		if (Tarefa == null) Tarefa = new Tarefa();
-
 		Tarefa.Titulo = TituloEntry.Text;
 		Tarefa.Descricao = DescricaoEditor.Text;
 		Tarefa.Status = (Status)StatusPicker.SelectedItem;
@@ -45,6 +47,7 @@ public partial class TarefaSalvarPage : ContentPage
 		}
 		else
 		{
+			Tarefa.DataAtualizacao = DateTime.Now;
 			await _tarefasService.UpdateAsync(Tarefa);
 		}
 		await Navigation.PopAsync();

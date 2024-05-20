@@ -30,7 +30,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Nome do Usuário:"
                            FontAttributes="Bold" />
-                    <Label Text="{Binding Tarefa.UsuarioNome}"
+                    <Label Text="{Binding Tarefa.Usuario.Nome}"
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">

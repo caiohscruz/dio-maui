@@ -14,14 +14,12 @@ namespace diomaui.Models
         public DateTime DataCriacao { get; set; }
         public DateTime DataAtualizacao { get; set; }
         public int UsuarioId { get; set; }
-        public string UsuarioNome { get {
-            var usuario = UsuarioService.GetInstance().GetUsuarios().Find(u => u.Id == this.UsuarioId);
-            if(usuario is Usuario){
-                return usuario.Nome;
-            }else{
-                return "Sem usuário";
-            }
+
+        [Ignore]
+        public Usuario Usuario { get {
+            return UsuarioService.GetInstance().GetUsuarios().Find(u => u.Id == this.UsuarioId);            
         } }
+
         public Status Status { get; set; }
 
         public Tarefa()

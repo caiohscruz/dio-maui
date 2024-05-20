@@ -7,6 +7,8 @@ namespace diomaui.Pages;
 public partial class TarefaDetalhePage : ContentPage
 {
 	public Tarefa Tarefa {get; private set;}
+
+	private DatabaseService<Tarefa> _tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
 	public TarefaDetalhePage(Tarefa tarefa)
 	{
 		InitializeComponent();
@@ -26,7 +28,6 @@ public partial class TarefaDetalhePage : ContentPage
 
 	private async void OnDeletarClicked(object sender, EventArgs e)
 	{
-		var _tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
 		await _tarefasService.DeleteAsync(Tarefa);
 		await Navigation.PopAsync();
 	}

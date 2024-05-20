@@ -54,6 +54,7 @@
                 </StackLayout>
 
                 <Button Text="Salvar"
+                        BackgroundColor="Blue"
                         Clicked="OnSalvarClicked"
                         HorizontalOptions="Fill"
                         Margin="20,20,20,0" />

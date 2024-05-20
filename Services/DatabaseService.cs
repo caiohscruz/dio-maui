@@ -18,7 +18,7 @@ namespace diomaui.Services
         }
 
         public Task<int> UpdateAsync(T entity)
-        {
+        {            
             return _connection.UpdateAsync(entity);
         }
 

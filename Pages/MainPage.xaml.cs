@@ -7,14 +7,13 @@ namespace diomaui.Pages;
 public partial class MainPage : ContentPage
 {
 
-	DatabaseService<Tarefa> _tarefasService;
+	DatabaseService<Tarefa> _tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);;
 
 	
 
 	public MainPage()
 	{
 		InitializeComponent();
-		_tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
 		
 		TarefasCollectionTable.BindingContext = this;
 
