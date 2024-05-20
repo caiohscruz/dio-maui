@@ -50,17 +50,30 @@
                                   ColumnDefinitions="0.1*, 0.3*,0.2*,0.2*, 0.2*">
                                 <Label Grid.Column="0"
                                        Text="{Binding Id}"
-                                       FontAttributes="Bold" />
+                                       FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand" />
                                 <Label Grid.Column="1"
-                                       Text="{Binding Titulo}" />
+                                       Text="{Binding Titulo}"
+                                       VerticalOptions="CenterAndExpand" />
                                 <Label Grid.Column="2"
-                                       Text="{Binding UsuarioNome}" />
+                                       Text="{Binding UsuarioNome}"
+                                       VerticalOptions="CenterAndExpand" />
                                 <Label Grid.Column="3"
-                                       Text="{Binding Status}" />
-                                <Button Grid.Column="4"
-                                        Command="{Binding Path=BindingContext.NavigateToDetailCommand, Source={x:Reference TarefasCollectionTable}}"
-                                        CommandParameter="{Binding .}"
-                                        Text="Ver" />
+                                       Text="{Binding Status}"
+                                       VerticalOptions="CenterAndExpand" />
+                                <StackLayout Grid.Column="4"
+                                             Orientation="Vertical">
+                                    <Button Grid.Row="0"
+                                            BackgroundColor="Blue"
+                                            Command="{Binding Path=BindingContext.NavigateToDetailCommand, Source={x:Reference TarefasCollectionTable}}"
+                                            CommandParameter="{Binding .}"
+                                            Text="Ver" />
+                                    <Button Grid.Row="1"
+                                            BackgroundColor="Red"
+                                            Command="{Binding Path=BindingContext.TarefaDeleteCommand, Source={x:Reference TarefasCollectionTable}}"
+                                            CommandParameter="{Binding .}"
+                                            Text="Deletar" />
+                                </StackLayout>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

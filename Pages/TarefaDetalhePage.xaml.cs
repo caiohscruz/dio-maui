@@ -23,5 +23,12 @@ public partial class TarefaDetalhePage : ContentPage
 	{
 		await Navigation.PushAsync(new TarefaSalvarPage(Tarefa));
 	}
+
+	private async void OnDeletarClicked(object sender, EventArgs e)
+	{
+		var _tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
+		await _tarefasService.DeleteAsync(Tarefa);
+		await Navigation.PopAsync();
+	}
 }
 

@@ -9,17 +9,13 @@ public partial class MainPage : ContentPage
 
 	DatabaseService<Tarefa> _tarefasService;
 
-	public ICommand NavigateToDetailCommand { get; private set; }
+	
 
 	public MainPage()
 	{
 		InitializeComponent();
 		_tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
-
-		NavigateToDetailCommand = new Command<Tarefa>(async (tarefa) =>
-		{
-			await Navigation.PushAsync(new TarefaDetalhePage(tarefa));
-		});
+		
 		TarefasCollectionTable.BindingContext = this;
 
 		CarregarTarefas();
@@ -30,13 +26,23 @@ public partial class MainPage : ContentPage
 		base.OnAppearing();
 		CarregarTarefas();
 	}
-
+	
 	private async void CarregarTarefas()
 	{
 		var tarefas = await _tarefasService.GetAllAsync();
 		TarefasCollectionTable.ItemsSource = tarefas;
 	}
+	
+	public ICommand NavigateToDetailCommand => new Command<Tarefa>(async (tarefa) =>
+	{
+		await Navigation.PushAsync(new TarefaDetalhePage(tarefa));
+	});
 
+	public ICommand TarefaDeleteCommand => new Command<Tarefa>(async (tarefa) =>
+	{
+		await _tarefasService.DeleteAsync(tarefa);
+		CarregarTarefas();
+	});
 	private async void OnAddTasksBtnClicked(object sender, EventArgs e)
 	{
 		await Navigation.PushAsync(new TarefaSalvarPage());		

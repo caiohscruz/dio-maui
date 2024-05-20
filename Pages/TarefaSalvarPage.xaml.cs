@@ -15,7 +15,6 @@ public partial class TarefaSalvarPage : ContentPage
 		_tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
 		InitializeComponent();
 		Tarefa = tarefa;
-		BindingContext = this;
 
 		if (Tarefa != null)
 		{
@@ -27,6 +26,8 @@ public partial class TarefaSalvarPage : ContentPage
 
 		StatusPicker.ItemsSource = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
 		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
+		
+		BindingContext = this;
 	}
 
 	private async void OnSalvarClicked(object sender, EventArgs e)

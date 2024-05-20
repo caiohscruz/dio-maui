@@ -52,7 +52,13 @@
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
                 <Button Text="Editar"
+                        BackgroundColor="BLue"
                         Clicked="OnEditarClicked"
+                        HorizontalOptions="Fill"
+                        Margin="20,20,20,0" />
+                <Button BackgroundColor="Red"
+                        Text="Deletar"
+                        Clicked="OnDeletarClicked"
                         HorizontalOptions="Fill"
                         Margin="20,20,20,0" />
                 <Button Text="Voltar"
