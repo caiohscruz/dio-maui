@@ -51,10 +51,14 @@
                     <Label Text="{Binding Tarefa.DataAtualizacao}"
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
+                <Button Text="Editar"
+                        Clicked="OnEditarClicked"
+                        HorizontalOptions="Fill"
+                        Margin="20,20,20,0" />
                 <Button Text="Voltar"
                         Clicked="OnVoltarClicked"
                         HorizontalOptions="Fill"
-                        Margin="20,20,20,20" />
+                        Margin="20,20,20,0" />
             </StackLayout>
         </VerticalStackLayout>
     </ScrollView>

@@ -18,5 +18,10 @@ public partial class TarefaDetalhePage : ContentPage
 	{
 		await Navigation.PopAsync();
 	}
+
+	private async void OnEditarClicked(object sender, EventArgs e)
+	{
+		await Navigation.PushAsync(new TarefaSalvarPage(Tarefa));
+	}
 }
 

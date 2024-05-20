@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:enums="clr-namespace:diomaui.Enums"
+             x:Class="diomaui.Pages.TarefaSalvarPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0"
+                             Spacing="25">
+            <Label Text="{Binding PageTitle}"
+                   Style="{StaticResource Headline}"
+                   SemanticProperties.HeadingLevel="Level1" />
+            <StackLayout Padding="20">
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Título:"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand" />
+                    <Entry x:Name="TituloEntry"
+                           Placeholder="Digite o título da tarefa"
+                           Margin="10, 0, 0, 0" />
+                </StackLayout>                
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Status:"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand" />
+                    <Picker x:Name="StatusPicker"
+                            Title="Selecione o status">
+                        <Picker.ItemSource />
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nome do Usuário:"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand" />
+                    <Picker x:Name="UsuarioPicker"
+                            Title="Selecione o usuário">
+                        <Picker.ItemDisplayBinding>
+                            <Binding Path="Nome" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Descrição:"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand" />
+                    <Editor x:Name="DescricaoEditor"
+                            Placeholder="Digite a descrição da tarefa"
+                            Height="100"
+                            AutoSize="TextChanges"
+                            Margin="10, 0, 0, 0" />
+                </StackLayout>
+
+                <Button Text="Salvar"
+                        Clicked="OnSalvarClicked"
+                        HorizontalOptions="Fill"
+                        Margin="20,20,20,0" />
+
+                <Button Text="Cancelar"
+                        Clicked="OnCancelarClicked"
+                        HorizontalOptions="Fill"
+                        Margin="20,20,20,0" />
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
