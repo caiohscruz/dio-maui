@@ -2,23 +2,23 @@
 using diomaui.Models;
 using diomaui.Services;
 
-namespace diomaui;
+namespace diomaui.Pages;
 
 public partial class MainPage : ContentPage
 {
 
 	DatabaseService<Tarefa> _tarefasService;
 
-	public ICommand VerTarefaCommand { get; private set; }
+	public ICommand NavigateToDetailCommand { get; private set; }
 
 	public MainPage()
 	{
 		InitializeComponent();
 		_tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
 
-		VerTarefaCommand = new Command<Tarefa>((tarefa) =>
+		NavigateToDetailCommand = new Command<Tarefa>(async (tarefa) =>
 		{
-			DisplayAlert("Alerta", $"Tarefa: {tarefa.Titulo}", "OK");
+			await Navigation.PushAsync(new TarefaDetalhePage(tarefa));
 		});
 		TarefasCollectionTable.BindingContext = this;
 

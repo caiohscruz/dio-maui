@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="diomaui.Pages.TarefaDetalhePage">
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0"
+                             Spacing="25">
+            <StackLayout Padding="20">
+                <Label Text="{Binding Tarefa.Titulo}"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label Text="{Binding Tarefa.Descricao}" />
+                <Label Text="{Binding Tarefa.UsuarioNome}" />
+                <Label Text="{Binding Tarefa.Status}" />
+                <Label Text="{Binding Tarefa.DataCriacao}" />
+                <Label Text="{Binding Tarefa.DataConclusao}" />
+                <Button Text="Voltar"
+                        Clicked="OnVoltarClicked"
+                        HorizontalOptions="Fill" />
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

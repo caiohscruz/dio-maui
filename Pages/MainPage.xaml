@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="diomaui.MainPage">
+             x:Class="diomaui.Pages.MainPage">
     <ScrollView>
         <VerticalStackLayout Padding="30,0"
                              Spacing="25">
@@ -58,7 +58,7 @@
                                 <Label Grid.Column="3"
                                        Text="{Binding Status}" />
                                 <Button Grid.Column="4"
-                                        Command="{Binding Path=BindingContext.VerTarefaCommand, Source={x:Reference TarefasCollectionTable}}"
+                                        Command="{Binding Path=BindingContext.NavigateToDetailCommand, Source={x:Reference TarefasCollectionTable}}"
                                         CommandParameter="{Binding .}"
                                         Text="Ver" />
                             </Grid>
