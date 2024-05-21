@@ -6,31 +6,36 @@ namespace diomaui.Pages;
 
 public partial class TarefaSalvarPage : ContentPage
 {
-	DatabaseService<Tarefa> _tarefasService;
+	DatabaseService<Tarefa> _tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
 	public Tarefa Tarefa { get; private set; }
 
 	public string PageTitle => Tarefa == null ? "Nova Tarefa" : "Editar Tarefa";
-	public TarefaSalvarPage(Tarefa tarefa = null)
+
+	public TarefaSalvarPage(Tarefa tarefa)
 	{
-		_tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
 		InitializeComponent();
 		Tarefa = tarefa;
 
 		StatusPicker.ItemsSource = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
 		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
 
-		if (Tarefa != null)
-		{
-			TituloEntry.Text = Tarefa.Titulo;
-			DescricaoEditor.Text = Tarefa.Descricao;
-			StatusPicker.SelectedItem = Tarefa.Status;
-			UsuarioPicker.SelectedItem = Tarefa.Usuario;
-		}
-		else
-		{
-			Tarefa = new Tarefa();
-			StatusPicker.SelectedItem = Status.Backlog;
-		}
+		TituloEntry.Text = Tarefa.Titulo;
+		DescricaoEditor.Text = Tarefa.Descricao;
+		StatusPicker.SelectedItem = Tarefa.Status;
+		UsuarioPicker.SelectedItem = Tarefa.Usuario;
+
+		BindingContext = this;
+	}
+
+	public TarefaSalvarPage(Status status)
+	{
+		InitializeComponent();
+		Tarefa = new Tarefa();
+
+		StatusPicker.ItemsSource = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
+		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
+
+		StatusPicker.SelectedItem = status;
 
 		BindingContext = this;
 	}

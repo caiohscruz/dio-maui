@@ -15,10 +15,10 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 		
 		TarefasEmBacklog.BindingContext = this;
-		// TarefasEmAnalise.BindingContext = this;
-		// TarefasParaFazer.BindingContext = this;
-		// TarefasEmDesenvolvimento.BindingContext = this;
-		// TarefasFeitas.BindingContext = this;
+		TarefasEmAnalise.BindingContext = this;
+		TarefasParaFazer.BindingContext = this;
+		TarefasEmDesenvolvimento.BindingContext = this;
+		TarefasFeitas.BindingContext = this;
 
 		CarregarTarefas();
 	}
@@ -66,7 +66,9 @@ public partial class MainPage : ContentPage
 	});
 	private async void OnAddTasksBtnClicked(object sender, EventArgs e)
 	{
-		await Navigation.PushAsync(new TarefaSalvarPage());		
+		var btn = (Button)sender;
+		var status = (Status)btn.CommandParameter;
+		await Navigation.PushAsync(new TarefaSalvarPage(status));		
 	}
 }
 
