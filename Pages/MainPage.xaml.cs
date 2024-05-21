@@ -52,18 +52,13 @@ public partial class MainPage : ContentPage
 		TarefasParaFazer.ItemsSource = tarefas.Where(t => t.Status == Status.ParaFazer);
 		TarefasEmDesenvolvimento.ItemsSource = tarefas.Where(t => t.Status == Status.Desenvolvimento);
 		TarefasFeitas.ItemsSource = tarefas.Where(t => t.Status == Status.Feito);		
-	}
-	
-	public ICommand NavigateToDetailCommand => new Command<Tarefa>(async (tarefa) =>
+	}	
+
+	public async void NavigateToDetail(Tarefa tarefa) 
 	{
 		await Navigation.PushAsync(new TarefaDetalhePage(tarefa));
-	});
+	}
 
-	public ICommand TarefaDeleteCommand => new Command<Tarefa>(async (tarefa) =>
-	{
-		await _tarefasService.DeleteAsync(tarefa);
-		CarregarTarefas();
-	});
 	private async void OnAddTasksBtnClicked(object sender, EventArgs e)
 	{
 		var btn = (Button)sender;
