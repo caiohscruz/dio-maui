@@ -68,7 +68,7 @@ public partial class MainPage : ContentPage
 	{
 		var btn = (Button)sender;
 		var status = (Status)btn.CommandParameter;
-		await Navigation.PushAsync(new TarefaSalvarPage(status));		
+		await Navigation.PushAsync(new TarefaSalvarPage(new Tarefa() {Status = status}));		
 	}
 }
 

@@ -10,8 +10,8 @@ public partial class TarefaSalvarPage : ContentPage
 	public Tarefa Tarefa { get; private set; }
 
 	public string PageTitle => Tarefa == null ? "Nova Tarefa" : "Editar Tarefa";
-
-	public TarefaSalvarPage(Tarefa tarefa)
+	
+	public TarefaSalvarPage(Tarefa tarefa = null)
 	{
 		InitializeComponent();
 		Tarefa = tarefa;
@@ -19,26 +19,21 @@ public partial class TarefaSalvarPage : ContentPage
 		StatusPicker.ItemsSource = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
 		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
 
-		TituloEntry.Text = Tarefa.Titulo;
-		DescricaoEditor.Text = Tarefa.Descricao;
-		StatusPicker.SelectedItem = Tarefa.Status;
-		UsuarioPicker.SelectedItem = Tarefa.Usuario;
+		if (Tarefa != null)
+		{
+			TituloEntry.Text = Tarefa.Titulo;
+			DescricaoEditor.Text = Tarefa.Descricao;
+			StatusPicker.SelectedItem = Tarefa.Status;
+			UsuarioPicker.SelectedItem = Tarefa.Usuario;
+		}
+		else
+		{
+			Tarefa = new Tarefa();
+			StatusPicker.SelectedItem = Status.Backlog;
+		}
 
 		BindingContext = this;
-	}
-
-	public TarefaSalvarPage(Status status)
-	{
-		InitializeComponent();
-		Tarefa = new Tarefa();
-
-		StatusPicker.ItemsSource = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
-		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
-
-		StatusPicker.SelectedItem = status;
-
-		BindingContext = this;
-	}
+	}	
 
 	private async void OnSalvarClicked(object sender, EventArgs e)
 	{
