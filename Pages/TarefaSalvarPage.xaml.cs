@@ -29,6 +29,7 @@ public partial class TarefaSalvarPage : ContentPage
 		else
 		{
 			Tarefa = new Tarefa();
+			StatusPicker.SelectedItem = Status.Backlog;
 		}
 
 		BindingContext = this;
@@ -36,6 +37,34 @@ public partial class TarefaSalvarPage : ContentPage
 
 	private async void OnSalvarClicked(object sender, EventArgs e)
 	{
+		if (string.IsNullOrEmpty(TituloEntry.Text))
+		{
+			await DisplayAlert("Erro", "Por favor, preencha o campo Título", "OK");
+			TituloEntry.Focus();
+			return;
+		}
+
+		if (string.IsNullOrEmpty(DescricaoEditor.Text))
+		{
+			await DisplayAlert("Erro", "Por favor, preencha o campo Descrição", "OK");
+			DescricaoEditor.Focus();
+			return;
+		}
+
+		if (StatusPicker.SelectedItem == null)
+		{
+			await DisplayAlert("Erro", "Por favor, selecione um Status", "OK");
+			StatusPicker.Focus();
+			return;
+		}
+
+		if (UsuarioPicker.SelectedItem == null)
+		{
+			await DisplayAlert("Erro", "Por favor, selecione um Usuário", "OK");
+			UsuarioPicker.Focus();
+			return;
+		}
+
 		Tarefa.Titulo = TituloEntry.Text;
 		Tarefa.Descricao = DescricaoEditor.Text;
 		Tarefa.Status = (Status)StatusPicker.SelectedItem;

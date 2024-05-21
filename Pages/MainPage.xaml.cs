@@ -7,9 +7,7 @@ namespace diomaui.Pages;
 public partial class MainPage : ContentPage
 {
 
-	DatabaseService<Tarefa> _tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);;
-
-	
+	DatabaseService<Tarefa> _tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);	
 
 	public MainPage()
 	{

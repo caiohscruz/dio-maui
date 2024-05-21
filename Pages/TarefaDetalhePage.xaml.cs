@@ -16,6 +16,14 @@ public partial class TarefaDetalhePage : ContentPage
 		BindingContext = this;
 	}
 
+	//TODO: Após editar, a tela de detalhes não está atualizando
+	protected override async void OnAppearing()
+	{
+		base.OnAppearing();
+		Tarefa = await _tarefasService.GetByIdAsync(Tarefa.Id);
+		BindingContext = this;
+	}
+
 	private async void OnVoltarClicked(object sender, EventArgs e)
 	{
 		await Navigation.PopAsync();
