@@ -79,8 +79,8 @@
                                                                   CommandParameter="{Binding .}" />
                                         </Frame.GestureRecognizers>
                                         <Label Text="{Binding Titulo}"
-                                                   HorizontalTextAlignment="Center"
-                                                   FontAttributes="Bold" />
+                                               HorizontalTextAlignment="Center"
+                                               FontAttributes="Bold" />
                                     </Frame>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -216,64 +216,3 @@
         </HorizontalStackLayout>
     </ScrollView>
 </ContentPage>
-<!-- VerticalStackLayout Padding="30,0"
-                             Spacing="25">
-            <StackLayout>
-                <Grid Padding="5"
-                      BackgroundColor="LightGray"
-                      RowDefinitions="Auto"
-                      ColumnDefinitions="0.1*, 0.3*,0.2*,0.2*, 0.2*">
-                    <Label Grid.Column="0"
-                           FontAttributes="Bold"
-                           Text="#" />
-                    <Label Grid.Column="1"
-                           FontAttributes="Bold"
-                           Text="Titulo" />
-                    <Label Grid.Column="2"
-                           FontAttributes="Bold"
-                           Text="Usuario" />
-                    <Label Grid.Column="3"
-                           FontAttributes="Bold"
-                           Text="Status" />
-                    <Label Grid.Column="4"
-                           FontAttributes="Bold"
-                           Text="Ações" />
-                </Grid>
-                <CollectionView x:Name="TarefasCollectionTable">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Padding="5"
-                                  RowDefinitions="Auto"
-                                  ColumnDefinitions="0.1*, 0.3*,0.2*,0.2*, 0.2*">
-                                <Label Grid.Column="0"
-                                       Text="{Binding Id}"
-                                       FontAttributes="Bold"
-                                       VerticalOptions="CenterAndExpand" />
-                                <Label Grid.Column="1"
-                                       Text="{Binding Titulo}"
-                                       VerticalOptions="CenterAndExpand" />
-                                <Label Grid.Column="2"
-                                       Text="{Binding Usuario.Nome}"
-                                       VerticalOptions="CenterAndExpand" />
-                                <Label Grid.Column="3"
-                                       Text="{Binding Status}"
-                                       VerticalOptions="CenterAndExpand" />
-                                <StackLayout Grid.Column="4"
-                                             Orientation="Vertical">
-                                    <Button Grid.Row="0"
-                                            BackgroundColor="Blue"
-                                            Command="{Binding Path=BindingContext.NavigateToDetailCommand, Source={x:Reference TarefasCollectionTable}}"
-                                            CommandParameter="{Binding .}"
-                                            Text="Ver" />
-                                    <Button Grid.Row="1"
-                                            BackgroundColor="Red"
-                                            Command="{Binding Path=BindingContext.TarefaDeleteCommand, Source={x:Reference TarefasCollectionTable}}"
-                                            CommandParameter="{Binding .}"
-                                            Text="Deletar" />
-                                </StackLayout>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-        </VerticalStackLayout -->
