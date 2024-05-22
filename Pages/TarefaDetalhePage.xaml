@@ -9,43 +9,43 @@
                    Style="{StaticResource Headline}"
                    SemanticProperties.HeadingLevel="Level1" />
             <StackLayout Padding="20">
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
                     <Label Text="Id:"
                            FontAttributes="Bold" />
                     <Label Text="{Binding Tarefa.Id}"
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
                     <Label Text="Título:"
                            FontAttributes="Bold" />
                     <Label Text="{Binding Tarefa.Titulo}"
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
                     <Label Text="Descrição:"
                            FontAttributes="Bold" />
                     <Label Text="{Binding Tarefa.Descricao}"
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
                     <Label Text="Nome do Usuário:"
                            FontAttributes="Bold" />
                     <Label Text="{Binding Tarefa.Usuario.Nome}"
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
                     <Label Text="Status:"
                            FontAttributes="Bold" />
                     <Label Text="{Binding Tarefa.Status}"
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
                     <Label Text="Data de Criação:"
                            FontAttributes="Bold" />
                     <Label Text="{Binding Tarefa.DataCriacao}"
                            Margin="10, 0, 0, 0" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
                     <Label Text="Data de Atualização:"
                            FontAttributes="Bold" />
                     <Label Text="{Binding Tarefa.DataAtualizacao}"

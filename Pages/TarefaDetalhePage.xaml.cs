@@ -36,6 +36,9 @@ public partial class TarefaDetalhePage : ContentPage
 
 	private async void OnDeletarClicked(object sender, EventArgs e)
 	{
+		bool confirm = await DisplayAlert("Deletar", "Deseja realmente deletar a tarefa?", "Sim", "Não");
+		if (!confirm) return;
+		
 		await _tarefasService.DeleteAsync(Tarefa);
 		await Navigation.PopAsync();
 	}
