@@ -8,78 +8,130 @@
             <Label Text="Detalhes da tarefa"
                    Style="{StaticResource Headline}"
                    SemanticProperties.HeadingLevel="Level1" />
-            <StackLayout Padding="20">
-                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
-                    <Label Text="Id:"
-                           FontAttributes="Bold" />
-                    <Label Text="{Binding Tarefa.Id}"
-                           Margin="10, 0, 0, 0" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
-                    <Label Text="Título:"
-                           FontAttributes="Bold" />
-                    <Label Text="{Binding Tarefa.Titulo}"
-                           Margin="10, 0, 0, 0" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
-                    <Label Text="Descrição:"
-                           FontAttributes="Bold" />
-                    <Label Text="{Binding Tarefa.Descricao}"
-                           Margin="10, 0, 0, 0" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
-                    <Label Text="Nome do Usuário:"
-                           FontAttributes="Bold" />
-                    <Label Text="{Binding Tarefa.Usuario.Nome}"
-                           Margin="10, 0, 0, 0" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
-                    <Label Text="Status:"
-                           FontAttributes="Bold" />
-                    <Label Text="{Binding Tarefa.Status}"
-                           Margin="10, 0, 0, 0" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
-                    <Label Text="Data de Criação:"
-                           FontAttributes="Bold" />
-                    <Label Text="{Binding Tarefa.DataCriacao}"
-                           Margin="10, 0, 0, 0" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10">
-                    <Label Text="Data de Atualização:"
-                           FontAttributes="Bold" />
-                    <Label Text="{Binding Tarefa.DataAtualizacao}"
-                           Margin="10, 0, 0, 0" />
-                </StackLayout>
-                <BoxView HeightRequest="2"
-                         BackgroundColor="#CCCCCC"
-                         Margin="0,20" />
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0"
-                            Text="Editar"
-                            BackgroundColor="BLue"
-                            Clicked="OnEditarClicked"
+            <Frame Padding="15"
+                   CornerRadius="10"
+                   BorderColor="#ffffff"
+                   HasShadow="True">
+                <StackLayout Padding="20">
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0, 0, 0, 10">
+                        <Label Text="Id:"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding Tarefa.Id}"
+                               Margin="10, 0, 0, 0" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0, 0, 0, 10">
+                        <Label Text="Título:"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding Tarefa.Titulo}"
+                               Margin="10, 0, 0, 0" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0, 0, 0, 10">
+                        <Label Text="Descrição:"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding Tarefa.Descricao}"
+                               Margin="10, 0, 0, 0" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0, 0, 0, 10">
+                        <Label Text="Nome do Usuário:"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding Tarefa.Usuario.Nome}"
+                               Margin="10, 0, 0, 0" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0, 0, 0, 10">
+                        <Label Text="Status:"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding Tarefa.Status}"
+                               Margin="10, 0, 0, 0" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0, 0, 0, 10">
+                        <Label Text="Data de Criação:"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding Tarefa.DataCriacao}"
+                               Margin="10, 0, 0, 0" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0, 0, 0, 10">
+                        <Label Text="Data de Atualização:"
+                               FontAttributes="Bold" />
+                        <Label Text="{Binding Tarefa.DataAtualizacao}"
+                               Margin="10, 0, 0, 0" />
+                    </StackLayout>
+                    <BoxView HeightRequest="2"
+                             BackgroundColor="#CCCCCC"
+                             Margin="0,20" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0"
+                                Text="Editar"
+                                BackgroundColor="BLue"
+                                Clicked="OnEditarClicked"
+                                HorizontalOptions="Fill"
+                                Margin="5,0" />
+                        <Button Grid.Column="1"
+                                BackgroundColor="Red"
+                                Text="Deletar"
+                                Clicked="OnDeletarClicked"
+                                HorizontalOptions="Fill"
+                                Margin="5,0" />
+                    </Grid>
+                    <BoxView HeightRequest="2"
+                             BackgroundColor="#CCCCCC"
+                             Margin="0,20" />
+                    <Button Text="Voltar"
+                            Clicked="OnVoltarClicked"
                             HorizontalOptions="Fill"
                             Margin="5,0" />
-                    <Button Grid.Column="1"
-                            BackgroundColor="Red"
-                            Text="Deletar"
-                            Clicked="OnDeletarClicked"
-                            HorizontalOptions="Fill" 
-                            Margin="5,0"/>
-                </Grid>
-                <BoxView HeightRequest="2"
-                         BackgroundColor="#CCCCCC"
-                         Margin="0,20" />
-                <Button Text="Voltar"
-                        Clicked="OnVoltarClicked"
-                        HorizontalOptions="Fill"
-                        Margin="5,0" />
-            </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame Padding="15"
+                   CornerRadius="10"
+                   BorderColor="#ffffff"
+                   HasShadow="True">
+                <StackLayout Spacing="10">
+                    <Label Text="Comentários"
+                           FontAttributes="Bold"
+                           FontSize="Medium" />
+                    <Editor x:Name="ComentarioEntry"
+                            HeightRequest="100"
+                            Placeholder="Digite seu comentário"
+                            Text="{Binding Comentario}" />
+                    <Picker x:Name="UsuarioPicker"
+                            Title="Selecione um usuário"
+                            ItemDisplayBinding="{Binding Nome}" />
+                    <Button Text="Adicionar Comentário"
+                            Clicked="OnAdicionarComentarioClicked" />
+                    <CollectionView x:Name="ComentariosCollection">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="10"
+                                             BackgroundColor="#F0F0F0">
+                                    <Label Text="{Binding Texto}"
+                                           FontAttributes="Italic" />
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 Spacing="5">
+                                        <Label Text="{Binding Usuario.Nome}"
+                                               HorizontalOptions="Start"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding Data, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
+                                               FontAttributes="Italic"
+                                               HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
