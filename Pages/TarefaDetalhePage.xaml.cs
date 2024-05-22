@@ -6,7 +6,7 @@ namespace diomaui.Pages;
 
 public partial class TarefaDetalhePage : ContentPage
 {
-	public Tarefa Tarefa {get; private set;}
+	public Tarefa Tarefa { get; private set; }
 
 	private DatabaseService<Tarefa> _tarefasService = new DatabaseService<Tarefa>(Constants.Db.DB_PATH);
 	private DatabaseService<Comentario> _comentariosService = new DatabaseService<Comentario>(Constants.Db.DB_PATH);
@@ -15,7 +15,7 @@ public partial class TarefaDetalhePage : ContentPage
 	{
 		InitializeComponent();
 		Tarefa = tarefa;
-		
+
 		ComentariosCollection.BindingContext = this;
 		BindingContext = this;
 
@@ -41,7 +41,7 @@ public partial class TarefaDetalhePage : ContentPage
 	{
 		await Navigation.PopAsync();
 	}
-	
+
 	private async void OnAdicionarComentarioClicked(object sender, EventArgs e)
 	{
 		if (string.IsNullOrEmpty(ComentarioEntry.Text))
@@ -56,7 +56,12 @@ public partial class TarefaDetalhePage : ContentPage
 			UsuarioPicker.Focus();
 			return;
 		}
-		await _comentariosService.InsertAsync(new Comentario { TarefaId = Tarefa.Id, UsuarioId = Tarefa.UsuarioId, Texto = ComentarioEntry.Text });
+		await _comentariosService.InsertAsync(new Comentario
+		{
+			TarefaId = Tarefa.Id,
+			UsuarioId = ((Usuario)UsuarioPicker.SelectedItem).Id,
+			Texto = ComentarioEntry.Text
+		});
 		UsuarioPicker.SelectedItem = null;
 		ComentarioEntry.Text = string.Empty;
 
