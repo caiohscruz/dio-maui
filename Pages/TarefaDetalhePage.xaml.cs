@@ -51,7 +51,7 @@ public partial class TarefaDetalhePage : ContentPage
 
 	private async void CarregarImagens()
 	{
-		var fotos = await _anexoService.GetQuery().Where(a => a.TarefaId == Tarefa.Id && string.IsNullOrEmpty(a.Arquivo)).ToListAsync();
+		var fotos = await _anexoService.GetQuery().Where(a => a.TarefaId == Tarefa.Id && !string.IsNullOrEmpty(a.Arquivo)).ToListAsync();
 
 		if (fotos.Count > 0)
 		{

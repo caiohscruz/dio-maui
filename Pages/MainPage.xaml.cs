@@ -18,18 +18,16 @@ public partial class MainPage : ContentPage
 		TarefasEmAnalise.BindingContext = this;
 		TarefasParaFazer.BindingContext = this;
 		TarefasEmDesenvolvimento.BindingContext = this;
-		TarefasFeitas.BindingContext = this;
-
-		CarregarTarefas();
+		TarefasFeitas.BindingContext = this;		
 	}
 
-	protected override void OnAppearing()
+	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
-		CarregarTarefas();
+		await CarregarTarefas();
 	}
 	
-	private async void CarregarTarefas()
+	private async Task CarregarTarefas()
 	{
 		var tarefas = await _tarefasService.GetAllAsync();
 

@@ -1,6 +1,18 @@
 # Projeto DIO MAUI
 
-Este é o projeto de um curso da DIO que fiz para me familiarizar com o MAUI.
+Este é o projeto de um curso da DIO que fiz para me familiarizar com o .NET MAUI.
+
+O .NET MAUI usa as tecnologias mais recentes para criar aplicativos nativos no Windows, macOS, iOS e Android, abstraindo-os em uma estrutura comum criada no .NET. Conheci essa tecnologia no VS Summit de 2023, trabalhava há algum tempo já no desenvolvimento web com C#/.NET, achei incrível a possibilidade de atuar em outros segmentos sem ter que me adaptar a outra linguagem.
+
+O projeto em questão se trata de um gerenciador de tarefas, com funcionalidades como:
+- CRUD das tarefas
+- Acesso à câmera e opção de anexar fotos às tarefas
+- Acesso ao GPS e opção de adicionar localizações às tarefas
+- Opção de verificar no Maps cada localização registrada
+- Adicionar comentários às tarefas
+
+Segue gif demonstrando a navegação e as funcionalidades:
+![Apresentação da navegação e funcionalidades do app](./Resources/Images/navegacao-app.gif)
 
 ## Pré-requisitos
 
