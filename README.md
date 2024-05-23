@@ -12,7 +12,10 @@ O projeto em questão se trata de um gerenciador de tarefas, com funcionalidades
 - Adicionar comentários às tarefas
 
 Segue gif demonstrando a navegação e as funcionalidades:
-![Apresentação da navegação e funcionalidades do app](./Resources/Images/navegacao-app.gif)
+
+<img src="./Resources/Images/navegacao-app.gif" height="800px">
+
+<!-- ![Apresentação da navegação e funcionalidades do app](./Resources/Images/navegacao-app.gif) -->
 
 ## Pré-requisitos
 
