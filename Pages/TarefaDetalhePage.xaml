@@ -83,6 +83,12 @@
                                 HorizontalOptions="Fill"
                                 Margin="5,0" />
                     </Grid>
+                    <Button Text="Tirar foto"
+                            Clicked="TirarFotoClicked"
+                            BackgroundColor="#6495ED"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="5,10,5,0"
+                            VerticalOptions="End" />
                     <BoxView HeightRequest="2"
                              BackgroundColor="#CCCCCC"
                              Margin="0,20" />
@@ -90,6 +96,30 @@
                             Clicked="OnVoltarClicked"
                             HorizontalOptions="Fill"
                             Margin="5,0" />
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="FotosFrame"
+                   CornerRadius="10"
+                   Padding="15"
+                   BorderColor="#ffffff"
+                   Margin="0,20,0,0"
+                   HasShadow="True">
+                <StackLayout Spacing="5">
+                    <Label Text="Fotos"
+                           FontAttributes="Bold"
+                           FontSize="Medium" />
+                    <CollectionView x:Name="FotosCollection">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="2"
+                                             Margin="0,20,0,0">
+                                    <Image Source="{Binding Arquivo}"
+                                           Aspect="AspectFill"
+                                           HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
             </Frame>
             <Frame Padding="15"
