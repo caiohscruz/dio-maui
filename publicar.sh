@@ -1,0 +1,1 @@
+dotnet publish diomaui.csproj -f net8.0-android -c Release -o ./ReleaseOutput
