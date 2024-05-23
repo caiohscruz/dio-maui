@@ -89,6 +89,12 @@
                             HorizontalOptions="FillAndExpand"
                             Margin="5,10,5,0"
                             VerticalOptions="End" />
+                    <Button x:Name="LocalizacaoButton" Text="Pegar as coordenadas do GPS"
+                            BackgroundColor="#2F4F4F"
+                            Clicked="GPSClicked"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="5,10,5,0"
+                            VerticalOptions="End" />
                     <BoxView HeightRequest="2"
                              BackgroundColor="#CCCCCC"
                              Margin="0,20" />
@@ -116,6 +122,40 @@
                                     <Image Source="{Binding Arquivo}"
                                            Aspect="AspectFill"
                                            HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="LocalizacaoFrame"
+                   CornerRadius="10"
+                   Padding="15"
+                   BorderColor="#ffffff"
+                   Margin="0,20,0,0"
+                   HasShadow="True">
+                <StackLayout Spacing="5">
+                    <Label Text="Localização"
+                           FontAttributes="Bold"
+                           FontSize="Medium" />
+                    <CollectionView x:Name="LocalizacaoCollection">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="2"
+                                             Margin="0,20,0,0">
+                                    <Label x:Name="LabelLinkedGoogleMaps"
+                                           FontAttributes="Italic">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.OpenLocationOnMapsCommand, Source={x:Reference LocalizacaoCollection}}"
+                                                                  CommandParameter="{Binding .}" />
+                                        </Label.GestureRecognizers>
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="Latitude: {0} / Longitude {1}">
+                                                <Binding Path="Latitude" />
+                                                <Binding Path="Longitude" />
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
                                 </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

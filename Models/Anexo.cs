@@ -6,5 +6,5 @@ public class Anexo
     public string Arquivo { get; set; }
     public int TarefaId { get; set; }
     public double Latitude { get; set; }
-    public double Longiture { get; set; }
+    public double Longitude { get; set; }
 }

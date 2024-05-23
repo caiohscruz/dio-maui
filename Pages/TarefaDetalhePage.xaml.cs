@@ -21,6 +21,7 @@ public partial class TarefaDetalhePage : ContentPage
 
 		ComentariosCollection.BindingContext = this;
 		FotosCollection.BindingContext = this;
+		LocalizacaoCollection.BindingContext = this;
 		BindingContext = this;
 
 		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
@@ -35,6 +36,7 @@ public partial class TarefaDetalhePage : ContentPage
 
 		CarregarComentarios();
 		CarregarImagens();
+		CarregarLocalizacoes();
 	}
 
 	private async void CarregarComentarios()
@@ -115,13 +117,20 @@ public partial class TarefaDetalhePage : ContentPage
 
 	private async Task<bool> CheckAndRequestStoragePermission()
 	{
-		return true;
-
-		//TODO: está retornando false não sei porque
 		var status = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
 		if (status != PermissionStatus.Granted)
 		{
 			status = await Permissions.RequestAsync<Permissions.StorageWrite>();
+		}
+		return status == PermissionStatus.Granted;
+	}
+
+	private async Task<bool> CheckAndRequestLocalizacaoPermission()
+	{
+		var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+		if (status != PermissionStatus.Granted)
+		{
+			status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
 		}
 		return status == PermissionStatus.Granted;
 	}
@@ -178,6 +187,85 @@ public partial class TarefaDetalhePage : ContentPage
 		catch (Exception ex)
 		{
 			await DisplayAlert("Erro", $"Ocorreu um erro: {ex.Message}", "OK");
+		}
+	}
+
+	public ICommand OpenLocationOnMapsCommand => new Command<Anexo>(async (location) =>
+	{
+		var url = string.Format("https://www.google.com/maps/search/?api=1&query={0},{1}", location.Latitude, location.Longitude);
+		await Launcher.OpenAsync(new Uri(url));
+	});
+
+	private async void GPSClicked(object sender, EventArgs e)
+	{
+		var confirm = await DisplayAlert("GPS", "Confirma a captura da localização?", "Sim", "Não");
+
+		if (!confirm) return;
+
+		LocalizacaoButton.Text = "Carregando...";
+		LocalizacaoButton.IsEnabled = false;
+
+		try
+		{
+
+			bool locationPermissionGranted = await CheckAndRequestLocalizacaoPermission();
+			if (!locationPermissionGranted)
+			{
+				await DisplayAlert("Permissões", "Permissões de localização são necessárias.", "OK");
+				return;
+			}
+
+			var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+			var location = await Geolocation.GetLocationAsync(request);
+
+			if (location == null)
+			{
+				await DisplayAlert("Erro", "Não foi possível capturar a localização", "OK");
+				return;
+			}
+
+			await _anexoService.InsertAsync(new Anexo
+			{
+				TarefaId = Tarefa.Id,
+				Latitude = location.Latitude,
+				Longitude = location.Longitude
+			});
+
+			CarregarLocalizacoes();
+
+			await DisplayAlert("Localização", $"Latitude: {location.Latitude}, Longitude: {location.Longitude}", "OK");
+		}
+		catch (FeatureNotSupportedException fnsEx)
+		{
+			await DisplayAlert("Erro", "GPS não é suportada nesse dispositivo. - " + fnsEx.Message, "OK");
+		}
+		catch (PermissionException pEx)
+		{
+			await DisplayAlert("Erro", "Permissão para acessar o GPS não concedida. - " + pEx.Message, "OK");
+		}
+		catch (Exception ex)
+		{
+			await DisplayAlert("Erro", $"Ocorreu um erro: {ex.Message}", "OK");
+		}
+		finally
+		{
+			LocalizacaoButton.Text = "Pegar as coordenadas do GPS";
+			LocalizacaoButton.IsEnabled = true;
+		}
+	}
+
+	private async void CarregarLocalizacoes()
+	{
+		var localizacoes = await _anexoService.GetQuery().Where(a => a.TarefaId == Tarefa.Id && a.Latitude != 0 && a.Longitude != 0).ToListAsync();
+
+		if (localizacoes.Count > 0)
+		{
+			LocalizacaoCollection.ItemsSource = localizacoes;
+			LocalizacaoFrame.IsVisible = true;
+		}
+		else
+		{
+			LocalizacaoFrame.IsVisible = false;
 		}
 	}
 }
