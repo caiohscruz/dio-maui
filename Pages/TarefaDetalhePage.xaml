@@ -24,42 +24,42 @@
                                  Margin="0, 0, 0, 10">
                         <Label Text="Título:"
                                FontAttributes="Bold" />
-                        <Label Text="{Binding Tarefa.Titulo}"
+                        <Label  x:Name="LabelTitulo" Text="{Binding Tarefa.Titulo}"
                                Margin="10, 0, 0, 0" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"
                                  Margin="0, 0, 0, 10">
                         <Label Text="Descrição:"
                                FontAttributes="Bold" />
-                        <Label Text="{Binding Tarefa.Descricao}"
+                        <Label x:Name="LabelDescricao" Text="{Binding Tarefa.Descricao}"
                                Margin="10, 0, 0, 0" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"
                                  Margin="0, 0, 0, 10">
                         <Label Text="Nome do Usuário:"
                                FontAttributes="Bold" />
-                        <Label Text="{Binding Tarefa.Usuario.Nome}"
+                        <Label x:Name="LabelNomeUsuario" Text="{Binding Tarefa.Usuario.Nome}"
                                Margin="10, 0, 0, 0" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"
                                  Margin="0, 0, 0, 10">
                         <Label Text="Status:"
                                FontAttributes="Bold" />
-                        <Label Text="{Binding Tarefa.Status}"
+                        <Label x:Name="LabelStatus" Text="{Binding Tarefa.Status}"
                                Margin="10, 0, 0, 0" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"
                                  Margin="0, 0, 0, 10">
                         <Label Text="Data de Criação:"
                                FontAttributes="Bold" />
-                        <Label Text="{Binding Tarefa.DataCriacao}"
+                        <Label x:Name="LabelDataCriacao" Text="{Binding Tarefa.DataCriacao}"
                                Margin="10, 0, 0, 0" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"
                                  Margin="0, 0, 0, 10">
                         <Label Text="Data de Atualização:"
                                FontAttributes="Bold" />
-                        <Label Text="{Binding Tarefa.DataAtualizacao}"
+                        <Label x:Name="LabelDataAtualizacao" Text="{Binding Tarefa.DataAtualizacao}"
                                Margin="10, 0, 0, 0" />
                     </StackLayout>
                     <BoxView HeightRequest="2"

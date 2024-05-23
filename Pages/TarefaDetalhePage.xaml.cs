@@ -19,25 +19,30 @@ public partial class TarefaDetalhePage : ContentPage
 		InitializeComponent();
 		Tarefa = tarefa;
 
-		ComentariosCollection.BindingContext = this;
-		FotosCollection.BindingContext = this;
-		LocalizacaoCollection.BindingContext = this;
+		// ComentariosCollection.BindingContext = this;
+		// FotosCollection.BindingContext = this;
+		// LocalizacaoCollection.BindingContext = this;
 		BindingContext = this;
 
 		UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
 	}
 
-	//TODO: Após editar, a tela de detalhes não está atualizando
-	protected override async void OnAppearing()
-	{
-		base.OnAppearing();
-		Tarefa = await _tarefasService.GetByIdAsync(Tarefa.Id);
-		BindingContext = this;
+	protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        
+		LabelTitulo.Text = Tarefa.Titulo;
+		LabelNomeUsuario.Text = Tarefa.Usuario.Nome;
+		LabelDataCriacao.Text = Tarefa.DataCriacao.ToString();
+		LabelDataAtualizacao.Text = Tarefa.DataAtualizacao.ToString();
+		LabelStatus.Text = Tarefa.Status.ToString();
+		LabelDescricao.Text = Tarefa.Descricao;
+        UsuarioPicker.ItemsSource = UsuarioService.GetInstance().GetUsuarios();
 
 		CarregarComentarios();
 		CarregarImagens();
 		CarregarLocalizacoes();
-	}
+    }
 
 	private async void CarregarComentarios()
 	{
@@ -50,8 +55,8 @@ public partial class TarefaDetalhePage : ContentPage
 
 		if (fotos.Count > 0)
 		{
-			FotosCollection.ItemsSource = fotos;
 			FotosFrame.IsVisible = true;
+			FotosCollection.ItemsSource = fotos;
 		}
 		else
 		{
@@ -115,6 +120,7 @@ public partial class TarefaDetalhePage : ContentPage
 		return status == PermissionStatus.Granted;
 	}
 
+	//TODO: Está retornando false, mesmo com a devida permissão no Manifest
 	private async Task<bool> CheckAndRequestStoragePermission()
 	{
 		var status = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
@@ -166,8 +172,8 @@ public partial class TarefaDetalhePage : ContentPage
 			var fileName = Path.Combine(directory, $"{DateTime.Now.ToString("ddMMyyyy_hhmmss")}.jpg");
 
 			// Salva a foto no diretório
-			using (FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
-				await stream.CopyToAsync(fs);
+			using FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+			await stream.CopyToAsync(fs);
 
 			await _anexoService.InsertAsync(new Anexo
 			{
