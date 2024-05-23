@@ -35,6 +35,13 @@ public partial class TarefaSalvarPage : ContentPage
 		BindingContext = this;
 	}	
 
+	//TODO: Ao carregar a tela, gostaria que fosse dado foco no campo Título, mas não está funcionando
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		TituloEntry.Focus();
+	}
+
 	private async void OnSalvarClicked(object sender, EventArgs e)
 	{
 		if (string.IsNullOrEmpty(TituloEntry.Text))
